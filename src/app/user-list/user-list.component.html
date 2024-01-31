@@ -1,0 +1,61 @@
+<!-- user-list.component.html -->
+<app-navbar></app-navbar>
+
+<div>
+  <div>
+    <dx-data-grid [dataSource]="users" keyExpr="id">
+      <dxo-paging [pageSize]="10"></dxo-paging>
+      
+      <dxi-column dataField="profileImage" caption="Profile Image" [cellTemplate]="profileImageTemplate">
+      </dxi-column>
+  
+      <dxi-column dataField="name" caption="Name"></dxi-column>
+      <dxi-column dataField="email" caption="Email"></dxi-column>
+      <dxi-column dataField="phone" caption="Phone"></dxi-column>
+  
+      <!-- Existing column for displaying document images -->
+      <dxi-column caption="User Docs" [cellTemplate]="docsTemplate"></dxi-column>
+      
+      <!-- New column for file upload -->
+      <dxi-column caption="Upload File" [cellTemplate]="uploadFileTemplate"></dxi-column>
+
+      <dxi-column caption="Upload Image" [cellTemplate]="uploadImageTemplate"></dxi-column>
+    </dx-data-grid>
+  </div>
+  
+  <ng-template #profileImageTemplate let-data="data">
+    <div class="profile-info-container">
+      <img [src]="'/Users/mohitmishra/Desktop/img-glr-dev/img-glr-asig/src/assets/profile-images' + data.data.profileImage" alt="Profile Image" width="50" height="50">
+      <span class="user-name">{{ data.data.name }}</span>
+    </div>
+  </ng-template>
+  
+  <!-- Updated template for displaying document images -->
+  <ng-template #docsTemplate let-data="data">
+    <div>
+      <ng-container *ngIf="data.data.documentImages && data.data.documentImages.length > 0">
+        <div *ngFor="let doc of data.data.documentImages">
+          <!-- Display each document image name -->
+          {{ doc.name }}
+        </div>
+        <span *ngIf="data.data.documentImages.length > 1">
+          +({{ data.data.documentImages.length - 1 }} more)
+        </span>
+      </ng-container>
+      <div *ngIf="!data.data.documentImages || data.data.documentImages.length === 0">
+        No documents available.
+      </div>
+    </div>
+  </ng-template>
+  <!-- New template for file upload -->
+  <ng-template #uploadFileTemplate let-data="data">
+    <input type="file" (change)="uploadFiles(data.data, $event)">
+  </ng-template>
+
+
+  <ng-template #uploadImageTemplate let-data="data">
+    <button mat-icon-button (click)="openImageUploadDialog(data.data)">
+      <mat-icon>cloud_upload</mat-icon>
+    </button>
+  </ng-template>
+</div>

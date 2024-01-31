@@ -1,0 +1,12 @@
+<!-- image-popup.component.html -->
+<div class="image-popup">
+    <div class="image-container">
+      <img [src]="'path/to/profile-images/' + images[currentIndex].name" alt="Image">
+    </div>
+    <div class="navigation">
+      <button (click)="prevImage()">Previous</button>
+      <button (click)="nextImage()">Next</button>
+    </div>
+    <button class="close-button" (click)="closePopup()">Close</button>
+  </div>
+  

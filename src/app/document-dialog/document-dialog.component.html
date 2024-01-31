@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+
+<div mat-dialog-content>
+  <img [src]="'path/to/profile-images/' + data.documentImages[currentImageIndex].name" alt="Document Image">
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="previousImage()">Previous</button>
+  <button mat-button (click)="nextImage()">Next</button>
+  <button mat-button (click)="dialogRef.close()">Close</button>
+</div>

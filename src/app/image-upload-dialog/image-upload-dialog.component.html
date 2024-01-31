@@ -1,0 +1,6 @@
+<!-- image-upload-dialog.component.html -->
+<div (drop)="onDrop($event)" (dragover)="onDragOver($event)">
+    <input type="file" (change)="onFileSelected($event)" />
+    <p>Drag & drop an image here</p>
+  </div>
+  

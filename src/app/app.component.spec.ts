@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'img-glr-asig'`, () => {
+  it(`should have as title 'image-gallery-asig'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('img-glr-asig');
+    expect(app.title).toEqual('image-gallery-asig');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('img-glr-asig app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('image-gallery-asig app is running!');
   });
 });
