@@ -14,7 +14,7 @@ export class UserService {
     return of([
       {
         id: 1,
-        profileImage: 'profile1.jpg',
+        profileImage: 'profile1.jpeg',
         name: 'John Doe',
         email: 'john@example.com',
         phone: '123-456-7890',
